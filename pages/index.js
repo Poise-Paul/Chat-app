@@ -54,28 +54,35 @@ export default function Home() {
       <main className="p-5 relative h-screen">
         <h1 className="font-semibold text-2xl">Question & Answers</h1>
         <hr className="mb-5" />
-          <div className="flex justify-end">
-            {chats.map((x, key) => {
-              return (
-                <>
-                  <div key={key} className="max-w-[50%]">
-                    <div
-                      className={`${
-                        x.color == "blue"
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200"
-                      } p-2 rounded-lg`}
-                    >
-                      <p>{x.message}</p>
-                    </div>
-                    <small className="font-medium text-gray-400">
-                      {x.time}
-                    </small>
+        <div className=" bg-red-200 ">
+          {chats.map((x, key) => {
+            return (
+              <>
+                <div
+                  key={key}
+                  className={`mb-2 ${
+                    x.color == "blue"
+                      ? "relative float-right "
+                      : "relative float-left w-[50%]"
+                  }`}
+                >
+                  <div
+                    className={`${
+                      x.color == "blue"
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 "
+                    } p-2 rounded-lg`}
+                  >
+                    <p>{x.message}</p>
                   </div>
-                </>
-              );
-            })}
-          </div>
+                  <small className="font-medium text-gray-400 text-end w-full">
+                    {x.time}
+                  </small>
+                </div>
+              </>
+            );
+          })}
+        </div>
         {/* Chat Section */}
         <form
           onSubmit={(e) => {
@@ -84,7 +91,7 @@ export default function Home() {
             addChat(currentChat);
           }}
         >
-          <div className="w-full items-end justify-end absolute left-0 mb-5 bottom-0">
+          <div className="w-full p-5 items-end justify-end absolute left-0 mb-5 bottom-0">
             <div className="flex gap-5">
               <input
                 type="text"
