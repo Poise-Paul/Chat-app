@@ -54,7 +54,7 @@ export default function Home() {
       <main className="p-5 relative h-screen">
         <h1 className="font-semibold text-2xl">Question & Answers</h1>
         <hr className="mb-5" />
-        <div className=" bg-red-200 ">
+        <div className=" bg-red-200 gridn grid-flow-row">
           {chats.map((x, key) => {
             return (
               <>
@@ -62,7 +62,7 @@ export default function Home() {
                   key={key}
                   className={`mb-2 ${
                     x.color == "blue"
-                      ? "relative float-right "
+                      ? "relative float-right w-[55%]"
                       : "relative float-left w-[50%]"
                   }`}
                 >
@@ -71,13 +71,19 @@ export default function Home() {
                       x.color == "blue"
                         ? "bg-blue-600 text-white"
                         : "bg-gray-200 "
-                    } p-2 rounded-lg`}
+                    } p-3 rounded-lg`}
                   >
                     <p>{x.message}</p>
                   </div>
-                  <small className="font-medium text-gray-400 text-end w-full">
-                    {x.time}
-                  </small>
+                  <div
+                    className={`w-full ${
+                      x.color == "blue" ? "text-end" : ""
+                    }`}
+                  >
+                    <small className="font-medium text-center text-gray-400 w-full">
+                      {x.time}
+                    </small>
+                  </div>
                 </div>
               </>
             );
